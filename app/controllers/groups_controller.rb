@@ -14,7 +14,7 @@ class GroupsController < ApplicationController
 
   # GET /groups/new
   def new
-    @group = Group.new
+    @groups = Group.all
   end
 
   # GET /groups/1/edit
@@ -24,16 +24,11 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
-    @group = Group.new(group_params)
+    @group = Group.all
 
     respond_to do |format|
-      if @group.save
-        format.html { redirect_to @group, notice: 'Group was successfully created.' }
-        format.json { render :show, status: :created, location: @group }
-      else
-        format.html { render :new }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
-      end
+        format.html { redirect_to groups_url, notice: 'Group was successfully created.' }
+        format.json { render :index, status: :created, location: @group }
     end
   end
 
@@ -67,8 +62,4 @@ class GroupsController < ApplicationController
       @group = Group.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def group_params
-      params.require(:group).permit(:name)
-    end
 end

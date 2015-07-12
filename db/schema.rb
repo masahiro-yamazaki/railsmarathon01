@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20150711133106) do
   end
 
   create_table "members", force: true do |t|
-    t.integer  "Group_id"
+    t.integer  "group_id"
     t.string   "name"
     t.string   "name_kana"
     t.string   "mail_address"
@@ -30,6 +30,6 @@ ActiveRecord::Schema.define(version: 20150711133106) do
     t.datetime "updated_at"
   end
 
-  add_index "members", ["Group_id"], name: "index_members_on_Group_id"
+  add_index "members", ["group_id"], name: "index_members_on_group_id"
 
 end

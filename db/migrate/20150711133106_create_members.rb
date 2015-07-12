@@ -1,7 +1,7 @@
 class CreateMembers < ActiveRecord::Migration
   def change
     create_table :members do |t|
-      t.belongs_to :Group, index: true
+      t.belongs_to :group, index: true
       t.string :name
       t.string :name_kana
       t.string :mail_address
