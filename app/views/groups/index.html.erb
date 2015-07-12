@@ -1,7 +1,9 @@
 <h1>Listing groups and members</h1>
 
 <%= form_tag(:controller=>'groups', :action=>'create') do %>
-グループ名<%= text_field_tag :group_name %><br>
-メンバー名<%= text_field_tag :name_kana %><br>
-<%= submit_tag "グループ検索" %>
+名前(カナ)<%= text_field_tag :name_kana, params[:name_kana] %>
+<br>
+グループ
+<%= select_tag "group_name", options_from_collection_for_select(Group.all, :name, :name) %>
+<%= submit_tag "検索" %>
 <% end %>
