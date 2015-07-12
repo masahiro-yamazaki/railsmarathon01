@@ -5,6 +5,10 @@ class GroupsController < ApplicationController
   # GET /groups.json
   def index
     @groups = Group.all
+    puts "----------"
+    puts params[:name] if params[:name].present?
+    puts "----------"
+    @group = Group.where("name='"+params[:name]+"'") if params[:name].present?
   end
 
   # GET /groups/1
@@ -24,12 +28,17 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
-    @group = Group.all
+    @groups = Group.all
+    puts "-----------"
+    puts params[:name]
+    puts "-----------"
+    @groups = Group.all
+    @groups = @groups.where("name='"+params[:name]+"'") if params[:name].present?
 
-    respond_to do |format|
-        format.html { redirect_to groups_url, notice: 'Group was successfully created.' }
-        format.json { render :index, status: :created, location: @group }
-    end
+    #respond_to do |format|
+        #format.html { redirect_to groups_url, notice: 'Group was successfully created.' }
+        #format.json { render :index, status: :created, location: @group }
+    #end
   end
 
   # PATCH/PUT /groups/1
