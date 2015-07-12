@@ -1,8 +1,8 @@
 <h1>Listing groups and members</h1>
 
 <%= form_tag(:controller=>'groups', :action=>'create') do %>
-グループ名<%= text_field_tag :group_name %><br>
-メンバー名<%= text_field_tag :name_kana %><br>
+グループ名<%= text_field_tag :group_name, params[:group_name] %><br>
+メンバー名<%= text_field_tag :name_kana, params[:name_kana] %><br>
 <%= submit_tag "グループ検索" %>
 <% end %>
 
@@ -18,7 +18,7 @@
   <tbody>
     <% @groups.each do |group| %>
       <% members = group.members %>
-      <% members = members.where("name_kana='"+params[:name_kana]+"'") if params[:name_kana].present? %>
+      <% members = members.where("name_kana like '%"+params[:name_kana]+"%'") if params[:name_kana].present? %>
       <% members.each do |member| %>
       <tr>
         <td><%= member.name %></td>
