@@ -1,7 +1,7 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+@group1 = Group.create(name:"SMAP");
+@group2 = Group.create(name:"Kinki Kids");
+
+Member.create(group_id:@group1.id, name:"木村拓哉",name_kana:"キムラタクヤ");
+Member.create(group_id:@group1.id, name:"香取慎吾",name_kana:"カトリシンゴ");
+Member.create(group_id:@group2.id, name:"堂本光一",name_kana:"ドウモトコウイチ");
+Member.create(group_id:@group2.id, name:"堂本剛",name_kana:"ドウモトツヨシ");
